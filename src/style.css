@@ -14,7 +14,6 @@
     box-sizing: border-box;
     min-width: 0;
     color: var(--white);
-    font-size: 22px;
     line-height: 1;
 }
 
@@ -23,6 +22,27 @@ body {
     min-height: 100vh;
     font-family: "Madimi One", "Barlow", sans-serif;
     background-color: var(--black);
+}
+
+h1 {
+    margin: 0;
+    font-family: "Madimi One";
+    font-weight: 300;
+    font-size: 30px;
+}
+
+h2 {
+    margin: 0;
+    font-family: "Madimi One";
+    font-weight: 300;
+    font-size: 22px;
+}
+
+h3 {
+    margin: 0;
+    font-family: "Barlow";
+    font-weight: 300;
+    font-size: 20px;
 }
 
 @keyframes appear {
@@ -46,28 +66,22 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 100px;
+    padding: 30px;
 }
 
 .header {
-    font-family: "Barlow";
-    font-weight: 300;
     animation-name: appear;
     animation-fill-mode: forwards;
     animation-duration: 0.8s;
     animation-timing-function: ease;
 }
 
-.title {
-    font-family: "Madimi One";
-    font-size: 72px;
-}
-
 .grid {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .row {
@@ -76,14 +90,13 @@ body {
 }
 
 .character {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+    margin: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    margin: 3px;
-    font-size: 30px;
     font-family: inherit;
     text-transform: uppercase;
     border-radius: 3px;
@@ -96,7 +109,7 @@ body {
 
 .keyboard {
     display: flex;
-    width: 50%;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     gap: 6px;
@@ -109,9 +122,8 @@ body {
 
 .key {
     position: relative;
-    padding: 6px;
+    padding: 3px;
     font-family: inherit;
-    font-size: 30px;
     text-decoration: none;
     text-transform: uppercase;
     border: none;
@@ -140,12 +152,12 @@ body {
 
 .modal-content {
     position: relative;
-    padding: 30px 60px 30px 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 30px;
+    padding: 30px;
     font-family: "Barlow";
     font-size: 22px;
     font-weight: 300;
@@ -167,13 +179,51 @@ body {
     transform: translateX(-50%);
     padding: 6px;
     display: flex;
-    font-family: "Barlow";
-    font-size: 22px;
-    font-weight: 300;
     border-radius: 3px;
     background-color: var(--red);
     animation-name: appear-and-disappear;
     animation-fill-mode: forwards;
     animation-duration: 2.4s;
     animation-timing-function: ease-out;
+}
+
+@media only screen and (min-width: 600px) {
+    h1 {
+        font-size: 72px;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 22px;
+    }
+    .container {
+        padding: 30px;
+    }
+    .grid {
+        width: 50%;
+    }
+    .character {
+        width: 60px;
+        height: 60px;
+    }
+    .keyboard {
+        width: 50%;
+    }
+    .key {
+        padding: 6px;
+    }
+    .modal-content {
+        padding: 30px 60px 30px 60px;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .container {
+        padding: 100px;
+    }
+    .character {
+        width: 100px;
+        height: 100px;
+    }
 }

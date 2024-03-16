@@ -5,26 +5,26 @@ export default function Modal({solution, turn, isCorrect, message, setMessage, i
                 ? (
                     <div className="modal">
                         <div className="modal-content">
-                            <div className="title">{message}</div>
+                            <h1 className="title">{message}</h1>
                             <div>
-                                <p>The hidden word was: {solution}</p>
+                                <h3>The hidden Wordle was: {solution}</h3>
                                 {isCorrect && (
-                                    <p>You gussed the Wordle in {turn}
+                                    <h3>You gussed the Wordle in {turn}
                                         {turn < 2 ? (<span> try!</span>) : (<span> tries!</span>)}
-                                    </p>
+                                    </h3>
                                 )}
                             </div>
                             <button onClick={() => {
                                 setMessage("");
                                 init();
                                 document.querySelector(".header").style.display = "block";
-                                }}>Play again!
+                                }}><h3>Play again!</h3>
                             </button>
                         </div>
                     </div>
                 ) : (
                     <div className="modal-message" onAnimationEnd={() => setMessage("")}>
-                        <p>{message}</p>
+                        <h3>{message}</h3>
                     </div>
                 )
             }

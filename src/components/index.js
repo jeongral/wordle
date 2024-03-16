@@ -17,9 +17,9 @@ export default function Main() {
         <div>
             <div className="container">
                 <div className="header">
-                    <div className="title">Wordle!</div>
-                    <div>Guess the Wordle in 6 tries.</div>
-                    <div>Current streak: {streak}</div>
+                    <h1>Wordle!</h1>
+                    <h3>Guess the Wordle in 6 tries.</h3>
+                    <h3>Current streak: {streak}</h3>
                 </div>
                 <div className="grid">
                 {guesses.map((guess, i) => (

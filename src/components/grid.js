@@ -10,7 +10,7 @@ export default function Grid({ solution, guess, isGuessed }) {
                                 : solution.includes(char)
                                 ? "var(--gold)"
                                 : "var(--red)";
-                return (<div className="character" style={{backgroundColor: `${bgColor}`}} key={i}>{char}</div>)
+                return (<div className="character" style={{backgroundColor: `${bgColor}`}} key={i}><h2>{char}</h2></div>)
             })}
         </div>
     )

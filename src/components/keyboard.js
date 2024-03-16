@@ -31,7 +31,7 @@ export default function Keyboard({solution, history}) {
                         : guesses().includes(k)
                         ? "var(--red)"
                         : "var(--dark-gray)";
-                    return (<button className="key" style={{backgroundColor: `${bgColor}`}}key={k}>{k}</button>);
+                    return (<button className="key" style={{backgroundColor: `${bgColor}`}}key={k}><h2>{k}</h2></button>);
                 })}
                 </div>
             ))}
