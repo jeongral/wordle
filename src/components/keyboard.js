@@ -3,19 +3,19 @@ export default function Keyboard({solution, history}) {
                     ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
                     ["z", "x", "c", "v", "b", "n", "m"]];
     
-    const allGuesses = () => {
+    const guesses = () => {
         return history.join("").split("");
     };
 
-    const exactGuesses = () => {
-        return solution.split("").filter((letter, i) => {
-            return history.map((word) => word[i]).includes(letter);
+    const correctGuesses = () => {
+        return solution.split("").filter((char, i) => {
+            return history.map((word) => word[i]).includes(char);
         })
     };
 
-    const inexactGuesses = () => {
-        return solution.split("").filter((letter) => {
-            return allGuesses().includes(letter);
+    const partialGuesses = () => {
+        return solution.split("").filter((char) => {
+            return guesses().includes(char);
         })
     };
 
@@ -24,11 +24,11 @@ export default function Keyboard({solution, history}) {
             {keyboard.map((keys, i) => (
                 <div className="key-list" key={i}>
                 {keys.map((k) => { 
-                    const bgColor = exactGuesses().includes(k)
+                    const bgColor = correctGuesses().includes(k)
                         ? "var(--green)"
-                        : inexactGuesses().includes(k)
+                        : partialGuesses().includes(k)
                         ? "var(--gold)"
-                        : allGuesses().includes(k)
+                        : guesses().includes(k)
                         ? "var(--red)"
                         : "var(--dark-gray)";
                     return (<button className="key" style={{backgroundColor: `${bgColor}`}}key={k}>{k}</button>);

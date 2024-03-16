@@ -5,26 +5,13 @@ import Keyboard from "./keyboard";
 import Modal from "./modal";
 
 export default function Main() {
-    const {solution, turn, guesses, history, isCorrect,
-        message, setMessage, showModal, setShowModal, init, handleKeyup} = useWordle();
+    const {solution, turn, guesses, history, isCorrect, message, setMessage, streak,
+        init, handleKeyup} = useWordle();
 
     useEffect(() => {
         window.addEventListener("keyup", handleKeyup);
-        // Win condition
-        if (isCorrect) {
-            setMessage("You won!");
-            setTimeout(() => setShowModal(true), 1000);
-            window.removeEventListener('keyup', handleKeyup);
-        } else {
-            // Lose condition
-            if (turn > 5) {
-                setMessage("You lost!");
-                setTimeout(() => setShowModal(true), 1000);
-                window.removeEventListener('keyup', handleKeyup);
-            }
-        }
         return () => window.removeEventListener("keyup", handleKeyup);
-    }, [handleKeyup, isCorrect, turn]);
+    }, [handleKeyup]);
 
     return (
         <div>
@@ -32,6 +19,7 @@ export default function Main() {
                 <div className="header">
                     <div className="title">Wordle!</div>
                     <div>Guess the Wordle in 6 tries.</div>
+                    <div>Current streak: {streak}</div>
                 </div>
                 <div className="grid">
                 {guesses.map((guess, i) => (
@@ -40,9 +28,9 @@ export default function Main() {
                 </div>
                 <Keyboard solution={solution} history={history}/>
             </div>
-            {showModal &&
+            {message &&
                 <Modal solution={solution} turn={turn} isCorrect={isCorrect} message={message}
-                    setShowModal={setShowModal} init={init}/>
+                    setMessage={setMessage} init={init}/>
             }
         </div>
     );

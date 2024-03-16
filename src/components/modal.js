@@ -1,4 +1,4 @@
-export default function Modal({solution, turn, isCorrect, message, setShowModal, init}) {
+export default function Modal({solution, turn, isCorrect, message, setMessage, init}) {
     return (
         <div>
             {isCorrect || turn > 5
@@ -15,7 +15,7 @@ export default function Modal({solution, turn, isCorrect, message, setShowModal,
                                 )}
                             </div>
                             <button onClick={() => {
-                                setShowModal(false);
+                                setMessage("");
                                 init();
                                 document.querySelector(".header").style.display = "block";
                                 }}>Play again!
@@ -23,7 +23,7 @@ export default function Modal({solution, turn, isCorrect, message, setShowModal,
                         </div>
                     </div>
                 ) : (
-                    <div className="modal-message" onAnimationEnd={() => setShowModal(false)}>
+                    <div className="modal-message" onAnimationEnd={() => setMessage("")}>
                         <p>{message}</p>
                     </div>
                 )
