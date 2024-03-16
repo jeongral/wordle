@@ -1,0 +1,179 @@
+:root {
+    --dark-gray: #333D50;
+    --white: #F4F3EA;
+    --gray: #CBD0D8;
+    --gold: #D3AC2B;
+    --red: #D32B52;
+    --green: #2BD3AC;
+    --black: #011627; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-width: 0;
+    color: var(--white);
+    font-size: 22px;
+    line-height: 1;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Madimi One", "Barlow", sans-serif;
+    background-color: var(--black);
+}
+
+@keyframes appear {
+    0% { opacity: 0 }
+    100% { opacity: 100 }
+}
+
+@keyframes appear-and-disappear {
+    0% { opacity: 0 }
+    50% { opacity: 100 }
+    100% { opacity: 0 }
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px;
+}
+
+.header {
+    font-family: "Barlow";
+    font-weight: 300;
+    animation-name: appear;
+    animation-fill-mode: forwards;
+    animation-duration: 0.8s;
+    animation-timing-function: ease;
+}
+
+.title {
+    font-family: "Madimi One";
+    font-size: 72px;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.character {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 3px;
+    font-size: 30px;
+    font-family: inherit;
+    text-transform: uppercase;
+    border-radius: 3px;
+    transition-duration: 0.8s;
+    animation-name: appear;
+    animation-fill-mode: forwards;
+    animation-duration: 0.8s;
+    animation-timing-function: ease;
+}
+
+.keyboard {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.key-list {
+    display: flex;
+    gap: 6px;
+}
+
+.key {
+    position: relative;
+    padding: 6px;
+    font-family: inherit;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--dark-gray);
+    cursor: pointer;
+    animation-name: appear;
+    animation-fill-mode: forwards;
+    animation-duration: 0.8s;
+    animation-timing-function: ease;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: relative;
+    padding: 30px 60px 30px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-family: "Barlow";
+    font-size: 22px;
+    font-weight: 300;
+    border-radius: 3px;
+    background-color: var(--dark-gray);
+}
+
+.modal-content > button {
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.modal-message {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px;
+    display: flex;
+    font-family: "Barlow";
+    font-size: 22px;
+    font-weight: 300;
+    border-radius: 3px;
+    background-color: var(--red);
+    animation-name: appear-and-disappear;
+    animation-fill-mode: forwards;
+    animation-duration: 2.4s;
+    animation-timing-function: ease-out;
+}
