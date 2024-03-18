@@ -88,6 +88,10 @@ h3 {
 
 .header {
     color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     animation-name: appear;
     animation-fill-mode: forwards;
     animation-duration: 0.8s;
@@ -256,6 +260,13 @@ h3 {
     transition-duration: 0.8s;
 }
 
+@media only screen and (max-height: 800px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
 @media only screen and (min-width: 600px) {
     h1 {
         font-size: 72px;
@@ -268,6 +279,9 @@ h3 {
     }
     .container {
         padding: 30px;
+    }
+    .header {
+        width: 50%;
     }
     .grid {
         width: 50%;
@@ -287,7 +301,7 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 1300px)  {
     .setting-icon {
         top: 100px;
         right: 100px;
