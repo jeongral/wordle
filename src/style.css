@@ -13,7 +13,6 @@
     padding: 0;
     box-sizing: border-box;
     min-width: 0;
-    color: var(--white);
     line-height: 1;
 }
 
@@ -21,7 +20,6 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: "Madimi One", "Barlow", sans-serif;
-    background-color: var(--black);
 }
 
 h1 {
@@ -52,8 +50,27 @@ h3 {
 
 @keyframes appear-and-disappear {
     0% { opacity: 0 }
-    50% { opacity: 100 }
+    30% { opacity: 100 }
+    70% { opacity: 100 }
     100% { opacity: 0 }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+}
+
+.setting-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: var(--white);
+    font-size: 30px;
+    z-index: 1;
+    cursor: pointer;
 }
 
 .container {
@@ -67,9 +84,12 @@ h3 {
     justify-content: space-between;
     align-items: center;
     padding: 30px;
+    background-color: var(--black);
+    transition-duration: 0.8s;
 }
 
 .header {
+    color: var(--white);
     animation-name: appear;
     animation-fill-mode: forwards;
     animation-duration: 0.8s;
@@ -97,7 +117,7 @@ h3 {
     align-items: center;
     justify-content: center;
     position: relative;
-    font-family: inherit;
+    color: var(--white);
     text-transform: uppercase;
     border-radius: 3px;
     transition-duration: 0.8s;
@@ -123,13 +143,12 @@ h3 {
 .key {
     position: relative;
     padding: 3px;
-    font-family: inherit;
     text-decoration: none;
     text-transform: uppercase;
     border: none;
     border-radius: 3px;
+    color: var(--white);
     background-color: var(--dark-gray);
-    cursor: pointer;
     animation-name: appear;
     animation-fill-mode: forwards;
     animation-duration: 0.8s;
@@ -143,11 +162,11 @@ h3 {
     justify-content: center;
     align-items: center;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -157,8 +176,8 @@ h3 {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    padding: 30px;
-    font-family: "Barlow";
+    padding: 50px;
+    color: var(--white);
     font-size: 22px;
     font-weight: 300;
     border-radius: 3px;
@@ -166,6 +185,9 @@ h3 {
 }
 
 .modal-content > button {
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 300;
     text-decoration: none;
     border: none;
     background-color: transparent;
@@ -179,12 +201,13 @@ h3 {
     transform: translateX(-50%);
     padding: 6px;
     display: flex;
+    color: var(--white);
     border-radius: 3px;
     background-color: var(--red);
     animation-name: appear-and-disappear;
     animation-fill-mode: forwards;
-    animation-duration: 2.4s;
-    animation-timing-function: ease-out;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
 }
 
 @media only screen and (min-width: 600px) {
@@ -219,11 +242,15 @@ h3 {
 }
 
 @media only screen and (min-width: 1300px) {
+    .setting-icon {
+        top: 100px;
+        right: 100px;
+    }
     .container {
         padding: 100px;
     }
     .character {
-        width: 100px;
-        height: 100px;
+        width: 75px;
+        height: 75px;
     }
 }

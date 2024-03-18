@@ -29,9 +29,13 @@ export default function Keyboard({solution, history}) {
                         : partialGuesses().includes(k)
                         ? "var(--gold)"
                         : guesses().includes(k)
-                        ? "var(--red)"
+                        ? "var(--gray)"
                         : "var(--dark-gray)";
-                    return (<button className="key" style={{backgroundColor: `${bgColor}`}}key={k}><h2>{k}</h2></button>);
+                    const color = !(correctGuesses().includes(k) || partialGuesses().includes(k)) && guesses().includes(k)
+                        ? "var(--dark-gray)"
+                        : "var(--white)";
+                    return (<button className="key" style={{backgroundColor: `${bgColor}`, color: `${color}`}}
+                                    key={k}><h2>{k}</h2></button>);
                 })}
                 </div>
             ))}
