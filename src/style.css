@@ -63,14 +63,12 @@ h3 {
     100% { transform: translateX(0) }
 }
 
-.setting-icon {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    color: var(--white);
-    font-size: 30px;
-    z-index: 1;
-    cursor: pointer;
+@keyframes fill {
+    0% { width: 0% }
+    25% { width: 50% }
+    50% { width: 75% }
+    75% { width: 85% }
+    100% { width: 100% }
 }
 
 .container {
@@ -208,6 +206,54 @@ h3 {
     animation-fill-mode: forwards;
     animation-duration: 1.5s;
     animation-timing-function: ease;
+}
+
+.setting-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: var(--white);
+    font-size: 30px;
+    z-index: 1;
+    cursor: pointer;
+    transition-duration: 0.8s;
+}
+
+.loading-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    transition-duration: 0.8s;
+}
+
+.loading-progress {
+    position: relative;
+    height: 24px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    border: 6px solid var(--white);
+    border-radius: 15px;
+    transition-duration: 0.8s;
+}
+
+.loading-progress > .loading-bar {
+    position: absolute;
+    background-color: var(--white);
+    width: 0px;
+    height: 12px;
+    border-radius: 15px;
+    animation-name: fill;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+    transition-duration: 0.8s;
 }
 
 @media only screen and (min-width: 600px) {
