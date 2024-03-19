@@ -33,7 +33,14 @@ const useWordle = () => {
     const [history, setHistory] = useState([]);
     const [isCorrect, setIsCorrect] = useState(false);
     const [message, setMessage] = useState({});
-    const [streak, setStreak] = useState(0);
+    const [stat, setStat] = useState({
+        played: 0,
+        win: 0,
+        lose: 0,
+        streak: 0,
+        max_streak: 0,
+        distribution: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+    });
     
     const init = () => {
         document.querySelector(".container").style.backgroundColor = "var(--black)";
@@ -105,26 +112,42 @@ const useWordle = () => {
     const isGameOver = () => {
         // Win condition
         if (isCorrect) {
-            setMessage({content: <div className="modal-content">
-                            <h1 className="title">You won!</h1>
+            setMessage({content: <div className="modal-wrapper">
+                            <h2 className="title">You won!</h2>
                             <h3>The hidden Wordle was: {solution}</h3>
                             <h3>You gussed the Wordle in {turn}
                             {turn < 2 ? (<span> try!</span>) : (<span> tries!</span>)}
                             </h3>
                             <button onClick={() => {init();}}><h3>Play again!</h3></button>
                         </div>, modal: true});
-            setStreak(prev => prev + 1);
+            setStat((prev) => {
+                const newStreak = prev.streak++;
+                const newMaxStreak = newStreak > prev.max_streak ? newStreak : prev.max_streak;
+                return ({
+                    ...stat, 
+                    played: prev.played++,
+                    win: prev.win++,
+                    streak: newStreak,
+                    max_streak: newMaxStreak,
+                    distribution: {...prev.distribution , [turn]: prev.distribution[turn]++}
+                })})
             document.querySelector(".container").style.backgroundColor = "var(--green)";
             window.removeEventListener('keyup', handleKeyup);
         } else {
             // Lose condition
             if (turn > 5) {
-                setMessage({content: <div className="modal-content">
-                            <h1 className="title">You lost!</h1>
+                setMessage({content: <div className="modal-wrapper">
+                            <h2 className="title">You lost!</h2>
                             <h3>The hidden Wordle was: {solution}</h3>
                             <button onClick={() => {init();}}><h3>Play again!</h3></button>
                         </div>, modal: true});
-                setStreak(0);
+                setStat((prev) => {
+                    return ({
+                        ...stat, 
+                        played: prev.played++,
+                        lose: prev.lose++,
+                        streak: 0,
+                    })})
                 document.querySelector(".container").style.backgroundColor = "var(--red)";
                 window.removeEventListener('keyup', handleKeyup);
                 return true;
@@ -138,7 +161,7 @@ const useWordle = () => {
         isGameOver();
     }, [isCorrect, turn]);
 
-    return {solution, turn, guesses, history, isCorrect, message, setMessage, streak,
+    return {solution, turn, guesses, history, isCorrect, message, setMessage, stat,
         init, handleKeyup};
 }
 
