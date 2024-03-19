@@ -39,7 +39,6 @@ export default function Main() {
                 <div className="header">
                     <h1>Wordle!</h1>
                     <h3>Guess the Wordle in 6 tries.</h3>
-                    <h3>{solution}</h3>
                 </div>
                 <div className="grid">
                 {guesses.map((guess, i) => (

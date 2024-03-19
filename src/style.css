@@ -231,6 +231,29 @@ button {
     cursor: pointer;
 }
 
+.chart {
+    width: 100%;
+}
+
+.chart-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.chart-label {
+    width: 15px;
+}
+
+.bar {
+    background-color: var(--green);
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+}
+
 .loading-container {
     width: 100%;
     height: 100%;

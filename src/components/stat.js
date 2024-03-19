@@ -1,9 +1,7 @@
 export default function Stat({stat}) {
     const winrate = stat.played !== 0 ? Math.round(stat.win / stat.played * 100) : 0;
     return (<div className="modal-wrapper">
-                <div>
-                    <h2>Statistics:</h2>
-                </div>
+                <h2>Statistics:</h2>
                 <div>
                     <div style={{display: "flex",  gap: "15px"}}>
                         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
@@ -25,6 +23,14 @@ export default function Stat({stat}) {
                             <h3>Streak</h3>
                         </div>
                     </div>
+                </div>
+                <h2>Guess Distribution</h2>
+                <div className="chart">
+                    {Object.keys(stat.distribution).map((key) =>
+                                        (<div className="chart-content">
+                                            <div className="chart-label"><h3>{key}</h3></div>
+                                            <div className="bar"><h3>{stat.distribution[key]}</h3></div>
+                                        </div>))}
                 </div>
             </div>);
 }
