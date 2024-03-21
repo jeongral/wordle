@@ -42,7 +42,7 @@
 
 ### Built With
 
-* [![React][React.js]][React-url]
+* React
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
