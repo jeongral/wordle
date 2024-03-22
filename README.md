@@ -88,10 +88,11 @@ This is an example of how to list things you need to use the software and how to
 - [x] Add a word database
 - [x] Work on the wordle hooks to make the game actually works
     - [x] get the input from user when user types
-    - [x] keep track of user guess using a single String array object
+    - [x] prevent user from typing invalid inputs
+    - [x] keep track of user guesses using a single String array object
     - [x] check the game condition every turn
     - [x] reset the game when it is a game over (whether it is win or lose)
-- [x] Make the grid and keyboard components color changes regarding the correctness of the user guess
+- [x] Make gameboard and keyboard components change color regarding the correctness of the user guess
 - [x] Add an appear animation when user types
 - [x] Make the website responsive using css media
 - [x] Add a loading screen
@@ -103,6 +104,7 @@ This is an example of how to list things you need to use the software and how to
 - [ ] Add a light-mode theme
 - [ ] Add a custom-game mode (accepting a custom solution from user)
 - [ ] Allow user to save the stat by adding register/login feature
+    - [ ] Make it full-stack
 
 See the [open issues](https://github.com/jeongral/wordle/issues) for a full list of proposed features (and known issues).
 
@@ -111,12 +113,13 @@ See the [open issues](https://github.com/jeongral/wordle/issues) for a full list
 <!-- CHALLENGE -->
 ## Challenges
 
-* I tried to reuse the handleKeyup function to the individual keys so that when user clicks on a button, it works same as typing. However, it keeps returning undefined value from Keyboard to the handleKeyup function in the hooks folder.
+* I tried to reuse the handleKeyup function to the individual keys so that when user clicks a keyboard button, it works same as when user typing. However, it keeps returning an undefined value from Keyboard to the handleKeyup function in the hooks folder.
     * If you know how to fix this issue, please let me know! (I'll really appreciate it)
-* I tried to add the animation to the most current row component only by setting id to it, but unfortunately, ids of all row components get changed simultaneously. Hence, it resulted to the case of all components shaking, not the most current row component.
-    * I need to make the id static so that the id doesn't change after
-* I need to workon responsibility more
-    * It still looks very wacky in mobile
+    * Possible solution: use Redux to keep track of states
+* I tried to add a shaking animation to the most current row component only by setting id to it, but unfortunately, ids of all row components got changed simultaneously. Hence, it resulted to the case of all components shaking, not the most current row component only.
+    * I need to make the id static so that the id won't change after
+* I need to work on responsiveness more
+    * It still looks very wacky in the mobile
     * I need to change the css of icons
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
